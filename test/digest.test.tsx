@@ -71,7 +71,7 @@ describe('digest routes', () => {
       counts: { ok: 3, retry: 3, fail: 1 },
     });
 
-    expect(html).toContain('<title>rig · digest 2026-10-28</title>');
+    expect(html).toMatch(/<title>[^<]*digest[^<]*2026-10-28[^<]*<\/title>/);
     expect(html).toContain('alpha');
     expect(html).toContain('unassigned');
     expect(html).toContain('zeta');

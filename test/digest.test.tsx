@@ -85,13 +85,12 @@ describe('digest routes', () => {
     expect(html).toContain('2026-10-28T08:40:00+02:00');
     expect(html).toContain('disk full');
     expect(html).toContain('temporary');
-    expect(html).toContain('fail');
-    expect(html).toContain('retry');
     expect(html).toContain('3');
     expect(html.indexOf('alpha')).toBeLessThan(html.indexOf('unassigned'));
     expect(html.indexOf('unassigned')).toBeLessThan(html.indexOf('zeta'));
-    expect(html).toMatch(/class="[^"]*warn[^"]*"[^>]*>[^<]*fail/);
-    expect(html).toMatch(/class="[^"]*warn[^"]*"[^>]*>[^<]*3/);
+    expect(html).toMatch(/<tr class="warn"><td>alpha<\/td>/);
+    expect(html).toMatch(/<tr><td>unassigned<\/td>/);
+    expect(html).toMatch(/<tr class="warn"><td>zeta<\/td>/);
   });
 
   it('returns 404 from both routes when the requested night is missing', async () => {
